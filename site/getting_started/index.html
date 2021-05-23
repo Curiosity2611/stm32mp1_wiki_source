@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Setting up STM32MP157C-DK2 - STM32MP1 Wiki</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Setting up STM32MP157C-DK2";
+    var mkdocs_page_input_path = "getting_started.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> STM32MP1 Wiki</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../stm32mp1_series/">STM32MP1 Microprocessor Series</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../reference/">External Reference</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Setting up STM32MP157C-DK2</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#required-equipment">Required Equipment</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#connection">Connection</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#execute-basic-commands">Execute Basic Commands</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#the-serial-terminal">The Serial Terminal</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#connect-using-ssh">Connect using SSH</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-commands">Basic Commands</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../linux_knowledge/">Some Linux Knowledge</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../board_details/">Board Specific Details</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../develop_cortexm4/">Develop on Cortex-M4</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">STM32MP1 Wiki</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Setting up STM32MP157C-DK2</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="getting-started-with-stm32mp157cdk-2">Getting started with STM32MP157CDK-2</h1>
+<h2 id="required-equipment">Required Equipment</h2>
+<p>The following table lists the required equipment to start playing with your STM32MP157C-DK2 board.</p>
+<p><img alt="Equipment List" src="../img/Equipment_list.png" /></p>
+<h2 id="connection">Connection</h2>
+<ul>
+<li>Connect the micro USB Type-B to USB Type-A cable between your laptop and the ST-LINK/V2-1 port of the board</li>
+<li>Connect the USB Type-C™ to USB Type-C™ cable to the 5V/3A power supply</li>
+<li>Connect the USB Type-C™ to USB Type-A cable betweenn your laptop and the USB Type-C™ OTG port of the board</li>
+<li>Optionally connect the Ethernet cable between your Ethernet network and the Ethernet port of the board</li>
+</ul>
+<p><img alt="Connection Image" src="../img/connection_image.png" /></p>
+<ul>
+<li>If the board power supply doesn't supply enough current (3A), the red LED indicates the issue following the rules below:</li>
+</ul>
+<p><img alt="Supply problem" src="../img/supply_problem.png" /></p>
+<h2 id="execute-basic-commands">Execute Basic Commands</h2>
+<p>This stage explains how to connect the Linux® terminal of your board to your host computer through the ST-LINK/V2-1. Then you will see how to execute basic commands with the Linux command line interface in order to be familiarized with the Linux console.</p>
+<h3 id="the-serial-terminal">The Serial Terminal</h3>
+<p>The serial terminal allows to communicate with the board trough a UART serial interface.</p>
+<ul>
+<li>On Mac/Linux install minicom by running the following commands respectively <br>
+<code>$ sudo apt-get install minicom</code> for Linux. <br>
+<code>$ brew install minicom</code> for Mac.</li>
+</ul>
+<p><strong> For Mac </strong>
+- Get the port on which the device is connected by running the following command <br>
+<code>$ ls /dev/tty*</code> and in my case the port is <code>/dev/tty.usbmodem142202</code> </p>
+<p><strong> For Linux </strong>
+- Get the port on which the device is connected by running the following command <br>
+<code>$ ls /dev/ttyACM*</code> and you should get the following output <code>/dev/ttyACM0</code></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Run the command again by disconnecting the dev board from the host computer and notice which port is not listed. The missing port ID is your desired port ID.</p>
+</div>
+<ul>
+<li>Connect minicom to the minicom -D /dev/ttyACM0 device by running the following command: <br>
+for <strong> Mac </strong> <code>minicom -D /dev/tty.usbmodem142202</code> and for <strong> Linux </strong> <code>minicom -D /dev/ttyACM0</code> <br></li>
+</ul>
+<p>The output screen will be as follows: <br></p>
+<pre><code>$ minicom -D /dev/ttyACM0
+Welcome to minicom 2.7.1
+
+OPTIONS: I18n 
+Compiled on Nov 15 2018, 20:18:47.
+Port /dev/ttyACM0, 15:56:03
+
+Press CTRL-A Z for help on special keys
+</code></pre>
+<ul>
+<li>Press the reset button to reset the board. You should see boot log displayed in the minicom window in your host computer. </li>
+</ul>
+<h3 id="connect-using-ssh">Connect using SSH</h3>
+<ul>
+<li>
+<p>This feature works only if the ethernet cable is connected to the board. <br></p>
+</li>
+<li>
+<p>Determine the board's IP Address by running the following command in board using the serial terminal 
+<code>$ ip addr show eth0</code> <br></p>
+</li>
+<li>
+<p>The following code is displayed in your serial terminal. </p>
+<pre><code>3: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP group default qlen 1000
+link/ether xx:xx:xx:xx:xx:xx brd ff:ff:ff:ff:ff:ff
+inet xx.xx.xx.xx/xx  brd xx.xx.xx.xx scope global dynamic eth0
+valid_lft 159045sec preferred_lft 159045sec
+inet6 xxxx::xx:xx:xx:xx/64 scope link 
+valid_lft forever preferred_lft forever
+</code></pre>
+</li>
+</ul>
+<p><code>inet xx.xx.xx.xx/xx</code> is your board's IP address. </p>
+<ul>
+<li>On the host computer connect the terminal to the board using ssh<pre><code>$ ssh root@xx.xx.xx.xx
+root@stm32mp1:~#
+</code></pre>
+</li>
+</ul>
+<h3 id="basic-commands">Basic Commands</h3>
+<p><strong> Printing distribution specific information </strong></p>
+<p><code>$ cat /etc/build</code></p>
+<pre><code>-----------------------
+Build Configuration:  |
+-----------------------
+BB_VERSION = 1.46.0
+BUILD_SYS = x86_64-linux
+NATIVELSBSTRING = universal
+TARGET_SYS = arm-ostl-linux-gnueabi
+MACHINE = stm32mp1
+DISTRO = openstlinux-weston
+DISTRO_VERSION = 3.1-openstlinux-5.10-dunfell-mp1-21-03-31
+TUNE_FEATURES = arm vfp cortexa7 neon vfpv4 thumb callconvention-hard
+TARGET_FPU = hard
+MANIFESTVERSION = ostl-21-03-31-rc4-2-g7ef7d27
+DISTRO_CODENAME = dunfell
+ACCEPT_EULA_stm32mp1 = 1
+GCCVERSION = 9.%
+PREFERRED_PROVIDER_virtual/kernel = linux-stm32mp
+PREFERRED_VERSION_linux-stm32mp = 
+-----------------------
+Layer Revisions:      |
+-----------------------
+meta-python       = default.xml:5bba79488b7d393d2258d6e917f7bf7b0d7c4073 
+meta-oe           = default.xml:5bba79488b7d393d2258d6e917f7bf7b0d7c4073 
+meta-gnome        = default.xml:5bba79488b7d393d2258d6e917f7bf7b0d7c4073 
+meta-initramfs    = default.xml:5bba79488b7d393d2258d6e917f7bf7b0d7c4073 
+meta-multimedia   = default.xml:5bba79488b7d393d2258d6e917f7bf7b0d7c4073 
+meta-networking   = default.xml:5bba79488b7d393d2258d6e917f7bf7b0d7c4073 
+meta-webserver    = default.xml:5bba79488b7d393d2258d6e917f7bf7b0d7c4073 
+meta-filesystems  = default.xml:5bba79488b7d393d2258d6e917f7bf7b0d7c4073 
+meta-perl         = default.xml:5bba79488b7d393d2258d6e917f7bf7b0d7c4073 
+meta-st-stm32mp   = default.xml:2e80e33539a193c6a8add6131c4c760009c49cea 
+meta-qt5          = default.xml:0d8eb956015acdea7e77cd6672d08dce18061510 
+meta-st-openstlinux = default.xml:673d7ee4572e3faadec3e43d5f0fa004465b78d9 
+meta              = default.xml:72431ee8de5e3a53d259cebf420a7713ac9e1f14
+</code></pre>
+<p><strong> Printing System Information </strong></p>
+<pre><code>$ uname -a 
+Linux stm32mp1 5.10.10 #1 SMP PREEMPT Sat Jan 23 15:04:06 UTC 2021 armv7l armv7l armv7l GNU/Linux
+</code></pre>
+<p><strong> Printing Linux Kernal and GCC versions </strong></p>
+<pre><code>$ cat /proc/version
+Linux version 5.10.10 (oe-user@oe-host) (arm-ostl-linux-gnueabi-gcc (GCC) 9.3.0, GNU ld (GNU Binutils) 2.34.0.20200220) #1 SMP PREEMPT Sat Jan 23 15:04:06 UTC 2021
+</code></pre>
+<p><strong> Printing the amount of disk space available on all mounted file systems </strong></p>
+<pre><code>$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        147M     0  147M   0% /dev
+/dev/mmcblk0p6  690M  424M  220M  66% /
+tmpfs           214M   64K  214M   1% /dev/shm
+tmpfs           214M  8.8M  205M   5% /run
+tmpfs           214M     0  214M   0% /sys/fs/cgroup
+tmpfs           214M   20K  214M   1% /tmp
+/dev/mmcblk0p4   58M   14M   40M  27% /boot
+/dev/mmcblk0p5   15M  6.8M  6.7M  51% /vendor
+tmpfs           214M  144K  214M   1% /var/volatile
+/dev/mmcblk0p7   28G   38M   26G   1% /usr/local
+tmpfs            43M     0   43M   0% /run/user/0
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../linux_knowledge/" class="btn btn-neutral float-right" title="Some Linux Knowledge">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../reference/" class="btn btn-neutral" title="External Reference"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../reference/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../linux_knowledge/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+site_name: STM32MP1 Wiki
+nav:
+    - Home: index.md
+    - STM32MP1 Microprocessor Series: stm32mp1_series.md
+    - External Reference: reference.md
+    - Setting up STM32MP157C-DK2: getting_started.md
+    - Some Linux Knowledge: linux_knowledge.md
+    - Board Specific Details: board_details.md
+    - Develop on Cortex-M4: develop_cortexm4.md
+    - About: about.md
+theme: readthedocs
+markdown_extensions:
+  - admonition

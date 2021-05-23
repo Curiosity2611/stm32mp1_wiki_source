@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Some Linux Knowledge - STM32MP1 Wiki</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Some Linux Knowledge";
+    var mkdocs_page_input_path = "linux_knowledge.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> STM32MP1 Wiki</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../stm32mp1_series/">STM32MP1 Microprocessor Series</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../reference/">External Reference</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../getting_started/">Setting up STM32MP157C-DK2</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Some Linux Knowledge</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#common-linux-commands">Common Linux Commands</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#the-shell">The Shell</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pwd-print-working-directory">pwd (Print Working Directory)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cd-change-directory">cd (Change Directory)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ls-list-directories">ls (List Directories)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#touch">touch</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#file">file</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cat">cat</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#less">less</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#history">history</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cp-copy">cp (Copy)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mv-move">mv (Move)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mkdir-make-directory">mkdir (Make Directory)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rm-remove">rm (Remove)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#find">find</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#help">help</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#man">man</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#whatis">whatis</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#alias">alias</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exit">exit</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#working-with-text">Working with Text</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#stdout-standard-out">stdout (Standard Out)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stdin-standard-in">stdin (Standard In)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#grep">grep</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#text-editors">Text Editors</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#vim-vi-improved">Vim (Vi Improved)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#vim-search-patterns">Vim Search Patterns</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#vim-navigation">Vim Navigation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#vim-appending-text">Vim Appending Text</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#vim-editing">Vim Editing</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#vim-saving-and-exiting">Vim Saving and Exiting</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#permissions">Permissions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#file-permissions">File Permissions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#modifying-permissions">Modifying Permissions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#packages">Packages</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#software-distribution">Software Distribution</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#package-repositories">Package Repositories</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#apt-package-management">apt (Package Management)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#compile-source-code">Compile Source Code</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../board_details/">Board Specific Details</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../develop_cortexm4/">Develop on Cortex-M4</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">STM32MP1 Wiki</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Some Linux Knowledge</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="linux-introduction">Linux Introduction</h1>
+<p>Welcome to Introduction to Linux section! Here you’ll find some general linux concepts which will come in handy when we dive deeper into working with STM32MP1 DK. </p>
+<h2 id="common-linux-commands">Common Linux Commands</h2>
+<h3 id="the-shell">The Shell</h3>
+<p>The shell is basically a program that takes your commands from the keyboard and sends them to the operating system to perform. If you’ve ever used a GUI, you’ve probably seen programs such as “Terminal” or “Console” these are just programs that launch a shell for you. <br></p>
+<p>Depending on the distribution your shell prompt might change, but for the most part it should adhere to the following format:</p>
+<pre><code>username@hostname:current_directory 
+deepak@STM32MP1:/home $
+</code></pre>
+<p>Notice the $ at the end of the prompt? Different shells will have different prompts, in our case:</p>
+<ul>
+<li>the $ is for a normal user</li>
+<li>the # is for a root user</li>
+</ul>
+<p>Let’s start with a simple command, echo. The echo command just prints out the text arguments to the display.</p>
+<pre><code>$ echo Hello World
+Hello World
+</code></pre>
+<h3 id="pwd-print-working-directory">pwd (Print Working Directory)</h3>
+<p>Everything in Linux is a file. Every file is organized in a hierarchical directory tree. The first directory in the filesystem is aptly named the root directory. The root directory has many folders and files which you can store more folders and files, etc. Here is an example of what the directory tree looks like:</p>
+<pre><code>/
+
+|-- bin
+
+|   |-- file1
+
+|   |-- file2
+
+|-- etc
+
+|   |-- file3
+
+|   -- directory1
+
+|       |-- file4
+
+|       -- file5
+
+|-- home
+
+|-- var
+</code></pre>
+<p>The location of these files and directories are referred to as paths. If you had a folder named <code>home</code> with a folder inside of it named <code>etc</code> and another folder in that folder called <code>sys</code>, that path would look like this: <code>/home/etc/sys</code> <br></p>
+<p>Navigation of the filesystem, much like real life is helpful if you know where you are and where you are going. To see where you are, you can use the <code>pwd</code> command, this command means “print working directory” and it just shows you which directory you are in, note the path stems from the root directory.</p>
+<pre><code>$pwd
+/home/root
+</code></pre>
+<h3 id="cd-change-directory">cd (Change Directory)</h3>
+<p>Now that you know where you are, let’s see if we can move around the filesystem a bit. There are two different ways to specify a path, with absolute and relative paths.</p>
+<ul>
+<li>
+<p><strong> Absolute path </strong>: This is the path from the root directory. The root is the head or parent directory. The root directory is commonly shown as a slash <code>/</code>. Every time your path starts with <code>/</code> it means you are starting from the root directory. For example, <code>/home/deepak/Desktop</code>.</p>
+</li>
+<li>
+<p><strong> Relative path </strong>: This is the path from where you are currently in filesystem. If I was in location <code>/home/deepak/Documents</code> and wanted to get to a directory inside Documents called <code>files</code>, I don’t have to specify the whole path from root like <code>/home/deepak/Documents/files</code>, I can just go to <code>files/</code> instead.</p>
+<pre><code>cd /home/root
+</code></pre>
+</li>
+</ul>
+<p>It can get pretty tiring navigating with absolute and relative paths all the time, luckily there are some shortcuts to help you out.</p>
+<ul>
+<li><code>.</code> (current directory). This is the directory you are currently in.</li>
+<li><code>..</code> (parent directory). Takes you to the directory above your current.</li>
+<li><code>~</code> (home directory). This directory defaults to your “home directory”. Such as /home/deepak.</li>
+<li><code>-</code> (previous directory). This will take you to the previous directory you were just at.</li>
+<li><code>cd</code> (home directory). This is another way to go to home directory. <pre><code>$ cd .
+$ cd ..
+$ cd ~
+$ cd -
+</code></pre>
+</li>
+</ul>
+<h3 id="ls-list-directories">ls (List Directories)</h3>
+<p>Now that we know how to move around the system, how do we figure out what is available to us? The <code>ls</code> command will list directories and files in the current directory by default, however you can specify which path you want to list the directories of.</p>
+<pre><code>$ ls
+bin   dev  home  lost+found  mnt   root  sbin  tmp  var
+boot  etc  lib   media       proc  run   sys   usr  vendor
+
+$ ls /home/deepak
+example_file_1  example_file_2
+</code></pre>
+<p>Also note that not all files in a directory will be visible. Filenames that start with <code>.</code> are hidden, you can view them however with the <code>ls</code> command and pass the <code>-a</code> flag to it (a for all).</p>
+<pre><code>$ ls -a
+</code></pre>
+<p>There is also one more useful <code>ls</code> flag, <code>-l</code> for long, this shows a detailed list of files in a long format. This will show you detailed information, starting from the left: <code>file permissions</code>, <code>number of links</code>, <code>owner name</code>, <code>owner group</code>, <code>file size</code>, <code>timestamp of last modification</code>, and <code>file/directory name</code></p>
+<pre><code>$ ls -l
+total 37
+drwxr-xr-x   2 root root  5120 Mar  9  2018 bin
+drwxr-xr-x  18 root root  1024 Mar 15  2019 boot
+drwxr-xr-x  13 root root 13840 Apr  9 02:28 dev
+drwxr-xr-x  44 root root  4096 Mar  2  2019 etc
+drwxr-xr-x   3 root root  1024 Mar  9  2018 home
+drwxr-xr-x  12 root root  4096 Mar  9  2018 lib
+drwx------   2 root root 12288 Mar 15  2019 lost+found
+drwxr-xr-x   2 root root  1024 Mar  9  2018 media
+drwxr-xr-x   2 root root  1024 Mar  9  2018 mnt
+dr-xr-xr-x 133 root root     0 Jan  1  1970 proc
+drwxr-xr-x   5 root root  1024 Apr  8 07:48 root
+drwxr-xr-x  13 root root   380 Apr  9 02:29 run
+drwxr-xr-x   3 root root  4096 Mar  9  2018 sbin
+dr-xr-xr-x  12 root root     0 Jan  1  2000 sys
+drwxrwxrwt   7 root root   180 Apr  9 09:43 tmp
+drwxr-xr-x  11 root root  1024 Mar  9  2018 usr
+drwxr-xr-x   9 root root  1024 Mar  2  2019 var
+drwxr-xr-x   4 root root  1024 Mar 15  2019 vendor
+</code></pre>
+<p>Commands have things called flags (or arguments or options, whatever you want to call it) to add more functionality. You can add them both together. For example, <code>-la</code>. The order of the flags determines which order it goes in. You can also do ls <code>-al</code> and it would still work. <br></p>
+<p>Run <code>ls</code> with different flags and see the output you receive.</p>
+<ul>
+<li><code>ls -R</code>: recursively list directory contents</li>
+<li><code>ls -r</code>: reverse order while sorting</li>
+<li><code>ls -t</code>: sort by modification time, newest first</li>
+</ul>
+<h3 id="touch">touch</h3>
+<p>Touch allows you to the create new empty files.</p>
+<pre><code>$ touch mysuperduperfile
+</code></pre>
+<p>Touch is also used to change timestamps on existing files and directories. Give it a try, do an <code>ls -l</code> on a file and note the timestamp, then <code>touch</code> that file and it will update the timestamp.</p>
+<h3 id="file">file</h3>
+<p>We learned about touch but did you notice that the filename didn’t conform to standard naming like you’ve probably seen with other operating systems like Windows? Normally you would expect a file called banana.jpeg and expect a JPEG picture file. <br></p>
+<p>In Linux, filenames aren’t required to represent the contents of the file. You can create a file called <code>funny.gif</code> that isn’t actually a GIF.</p>
+<p>To find out what kind of file a file is, you can use the file command. It will show you a description of the file’s contents.</p>
+<pre><code>$ file Documents
+Documents: directory
+</code></pre>
+<h3 id="cat">cat</h3>
+<p>Let’s learn how to read a file. A simple command to use is the cat command, short for concatenate, it not only displays file contents but it can combine multiple files and show you the output of them.</p>
+<pre><code>$ cat dogfile birdfile
+</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It’s not great for viewing large files and it’s only meant for short content. There are many other tools that we use to view larger text files that we’ll discuss later. </p>
+</div>
+<h3 id="less">less</h3>
+<p>If you are viewing text files larger than a simple output then you can use <code>less</code> command. The text is displayed in a paged manner, so you can navigate through a text file page by page.<br></p>
+<p>Go ahead and look at the contents of a file with less. Once you’re in the less command, you can actually use other keyboard commands to navigate in the file.</p>
+<pre><code>$ less /home/deepak/Documents/text1
+</code></pre>
+<p>Use the following command to navigate through less:</p>
+<ul>
+<li><code>q</code> - Used to quit out of less and go back to your shell.</li>
+<li><code>Page up</code>, <code>Page down</code>, <code>Up</code> and <code>Down</code> - Navigate using the arrow keys and page keys.</li>
+<li><code>g</code> - Moves to beginning of the text file.</li>
+<li><code>G</code> - Moves to the end of the text file.</li>
+<li><code>/sometexttosearch</code> - You can search for specific text inside the text document. Prefacing the words you want to search with <code>/</code></li>
+<li><code>h</code> - If you need a little help about how to use less while you’re in less, use help.</li>
+</ul>
+<h3 id="history">history</h3>
+<p>In your shell, there is a history of the commands that you previously entered, you can actually look through these commands. This is quite useful when you want to find and run a command you used previously without actually typing it again.<br></p>
+<pre><code>$ history
+</code></pre>
+<p>Want to run the same command you did before, just hit the up arrow.</p>
+<p>Want to run the previous command without typing it again? Use <code>!!</code> If you typed <code>cat file1</code> and want to run it again, you can actually just go <code>!!</code> and it will run the last command. <br></p>
+<p>Another history shortcut is <code>ctrl-R</code>, this is the reverse search command, if you hit <code>ctrl-R</code> and you start typing parts of the command you want it will show you matches and you can just navigate through them by hitting the <code>ctrl-R</code> key again. Once you found the command you want to use again, just hit the <code>Enter</code> key. <br></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If the terminal window gets cluttered, use the <code>$ clear</code> command to clear up your display.</p>
+</div>
+<p>While we are talking about useful things, one of the most useful features in any command-line environment is tab completion. If you start typing the beginning of a command, file, directory, etc and hit the Tab key, it will autocomplete based on what it finds in the directory you are searching as long as you don’t have any other files that start with those letters. For example if you were trying to run the command chrome, you can type chr and press Tab and it will autocomplete chrome.</p>
+<h3 id="cp-copy">cp (Copy)</h3>
+<p>Use copy command to copy files from one location to other location. </p>
+<pre><code>$ cp mycoolfile /home/deepak/documents/cooldocs
+</code></pre>
+<p><code>mycoolfile</code> is the file you want to copy and <code>/home/deepak/Documents/cooldocs</code> is where you are copying the file to.</p>
+<p><strong> Wildcard </strong> - A wildcard is a character that can be substituted for a pattern based selection, giving you more flexibility with searches. You can use wildcards in every command for more flexibility.</p>
+<ul>
+<li><code>*</code> the wildcard of wildcards, it's used to represent all single characters or any string.</li>
+<li><code>?</code> used to represent one character</li>
+<li><code>[]</code> used to represent any character within the brackets<pre><code>$ cp *.jpg /home/deepak/Pictures
+</code></pre>
+</li>
+</ul>
+<p>This will copy all files with the .jpg extension in your current directory to the Pictures directory.</p>
+<p><strong> Copying Directories </strong> <br>
+A useful command is to use the <code>-r</code> flag, this will recursively copy the files and directories within a directory.</p>
+<pre><code>$ cp -r Pumpkin/ /home/deepak/Documents
+</code></pre>
+<p>One thing to note, if you copy a file over to a directory that has the same filename, the file will be overwritten with whatever you are copying over. Inorder to avoid that you can use the <code>-i</code> flag (interactive) to prompt you before overwriting a file.</p>
+<pre><code>$ cp -i mycoolfile /home/deepak/Pictures
+</code></pre>
+<h3 id="mv-move">mv (Move)</h3>
+<p>Used for moving files and also renaming them. Quite similar to the <code>cp</code> command in terms of flags and functionality. <br></p>
+<p><strong> Rename File </strong>
+You can rename files like this:</p>
+<pre><code>$ mv oldfile newfile
+</code></pre>
+<p>Or you can actually move a file to a different directory:</p>
+<pre><code>$ mv file2 /home/deepak/Documents
+</code></pre>
+<p>And move more than one file:</p>
+<pre><code>$ mv file_1 file_2 /somedirectory
+</code></pre>
+<p><strong> Rename Directory </strong>
+You can rename directories as well:</p>
+<pre><code>$ mv directory1 directory2
+</code></pre>
+<p>Like <code>cp</code>, if you <code>mv</code> a file or directory it will overwrite anything in the same directory. So you can use the <code>-i</code> flag to prompt you before overwriting anything.</p>
+<pre><code>$ mv -i directory1 directory2
+</code></pre>
+<p><strong> Create a Backup File </strong> <br />
+Let’s say you did want to <code>mv</code> a file to overwrite the previous one. You can also make a backup of that file and it will just rename the old version with a <code>~</code></p>
+<pre><code>$ mv -b directory1 directory2
+</code></pre>
+<h3 id="mkdir-make-directory">mkdir (Make Directory)</h3>
+<p>We might need some directories to store all the files we’ve been working on. The <code>mkdir</code> command (Make Directory) is useful for that, it will create a directory if it doesn’t exist. <br></p>
+<p><strong> Multiple Directories </strong> <br></p>
+<p>You can even make multiple directories at the same time.</p>
+<pre><code>$ mkdir books paintings
+</code></pre>
+<p><strong> Sub Directories </strong>   </p>
+<p>You can also create subdirectories at the same time with the <code>-p</code> (parent flag)</p>
+<pre><code>$ mkdir -p books/hemmingway/favorites
+</code></pre>
+<h3 id="rm-remove">rm (Remove)</h3>
+<p>To remove files you can use the <code>rm</code> command. The <code>rm</code> (remove) command is used to delete files and directories.</p>
+<pre><code>$ rm file1
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Take caution when using <code>rm</code>, you cannot undo once done. Be careful. </p>
+</div>
+<p>Fortunately there are some safety measures put into place, so you can’t just remove a bunch of important files. Write-protected files will prompt you for confirmation before deleting them. If a directory is write-protected it will also not be easily removed. <br></p>
+<p>Now if you don’t care about any of that, you can absolutely remove a bunch of files.</p>
+<pre><code>$ rm -f file1
+</code></pre>
+<p><code>-f</code> or force option tells <code>rm</code> to remove all files, whether they are write protected or not, without prompting the user (as long as you have the appropriate permissions).</p>
+<pre><code>$ rm -i file
+</code></pre>
+<p>Adding the <code>-i</code> flag like many of the other commands, will give you a prompt on whether you want to actually remove the files or directories.</p>
+<pre><code>$ rm -r directory
+</code></pre>
+<p>You can’t just <code>rm</code> a directory by default, you’ll need to add the <code>-r</code> flag (recursive) to remove all the files and any subdirectories it may have. <br></p>
+<p>You can remove a directory with the rmdir command.</p>
+<pre><code>$ rmdir directory
+</code></pre>
+<h3 id="find">find</h3>
+<p>With all the files we have on the system it can get a little hectic trying to find a specific one. Well there’s a command we can use for that, <code>find</code></p>
+<pre><code>$ find /home -name puppies.jpg
+</code></pre>
+<p>With <code>find</code> you’ll have to specify the directory you’ll be searching it, what you’re searching for, in this case we are trying to find a file by the name of <code>puppies.jpg</code></p>
+<p>You can specify what type of file you are trying to find.</p>
+<pre><code>$ find /home -type d -name MyFolder
+</code></pre>
+<p>You can see that I set the type of file I’m trying to find as <code>d</code> for directory and I’m still searching by the name of <code>MyFolder</code>.</p>
+<p>One cool thing to note is that find doesn’t stop at the directory you are searching, it will look inside any subdirectories that directory may have as well.</p>
+<h3 id="help">help</h3>
+<p>Linux has some great built-in tools to help you how to use a command or check what flags are available for a command. One tool, <code>help</code>, is a built-in bash command that provides help for other bash commands (echo, logout, pwd, etc).</p>
+<pre><code>$ help echo
+</code></pre>
+<p>This will give you a description and the options you can use when you want to run <code>echo</code>. For other executable programs, it’s convention to have an option called <code>--help</code> or something similar.</p>
+<pre><code>$ echo --help
+</code></pre>
+<p>Not all developers who ship out executables will conform to this standard, but it’s probably your best shot to find some help on a program.</p>
+<h3 id="man">man</h3>
+<p>You can see the manuals for a command with the <code>man</code> command.</p>
+<pre><code>$ man ls
+</code></pre>
+<p>Man pages are manuals that are by default built into most Linux operating systems. They provide documentation about commands and other aspects of the system.</p>
+<h3 id="whatis">whatis</h3>
+<p>If you are ever feeling doubtful about what a command does, you can use the <code>whatis</code> command. The <code>whatis</code> command provides a brief description of command line programs.</p>
+<pre><code>$ whatis cat
+</code></pre>
+<p>The description gets sourced from the manual page of each command. If you ran <code>whatis cat</code>, you’d see there is a small blurb with a short description.</p>
+<h3 id="alias">alias</h3>
+<p>Sometimes typing commands can get really repetitive, or if you need to type a long command many times, it’s best to have an alias you can use for that. To create an alias for a command you simply specify an alias name and set it to the command.</p>
+<pre><code>$ alias foobar='ls -la'
+</code></pre>
+<p>Now instead of typing <code>ls -la</code>, you can type <code>foobar</code> and it will execute that command. Keep in mind that this command won't save your alias after reboot, so you'll need to add a permanent alias in:</p>
+<p><code>~/.bashrc</code> 
+or similar files if you want to have it persist after reboot. <br></p>
+<p>You can remove aliases with the unalias command:</p>
+<pre><code>$ unalias foobar
+</code></pre>
+<h3 id="exit">exit</h3>
+<p>To exit from the shell, you can use the <code>exit</code> command</p>
+<pre><code>$ exit
+</code></pre>
+<p>Or the <code>logout</code> command</p>
+<pre><code>$ logout
+</code></pre>
+<p>Or if you are working out of a terminal GUI, you can just close the terminal.</p>
+<h2 id="working-with-text">Working with Text</h2>
+<h3 id="stdout-standard-out">stdout (Standard Out)</h3>
+<p>Use <code>echo</code> to print something on the screen. </p>
+<pre><code>$ echo Hello World
+</code></pre>
+<p>We know this prints out Hello World to the screen, but how? Processes use I/O streams to receive input and return output. By default the echo command takes the input (standard input or stdin) from the keyboard and returns the output (standard output or stdout) to the screen. So that's why when you type echo Hello World in your shell, you get Hello World on the screen. However, I/O redirection allows us to change this default behavior giving us greater file flexibility.</p>
+<pre><code>&gt;
+</code></pre>
+<p>The &gt; is a redirection operator that allows us the change where standard output goes. It allows us to send the output of echo Hello World to a file instead of the screen. If the file does not already exist it will create it for us. However, if it does exist it will overwrite it (you can add a shell flag to prevent this depending on what shell you are using). <br></p>
+<p>And that's basically how stdout redirection works!</p>
+<pre><code>$ echo Hello World &gt; peanuts.txt
+</code></pre>
+<p>What just happened? Well check the directory where you ran that command and you should see a file called peanuts.txt, look inside that file and you should see the text Hello World. Lots of things just happened in one command so let's break it down.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the file already exist it will overwrite it the file with the new file. You can always use the shell flag <code>-i</code> to warn you before overwriting. </p>
+</div>
+<p>If you just want to append the test to the file then use <code>&gt;&gt;</code> instead of <code>&gt;</code></p>
+<pre><code>$ echo Hello World &gt;&gt; peanuts.txt
+</code></pre>
+<p>This will append Hello World to the end of the peanuts.txt file, if the file doesn't already exist it will create it for us like it did with the <code>&gt;</code> redirector!</p>
+<h3 id="stdin-standard-in">stdin (Standard In)</h3>
+<p>There are different standard input (stdin) streams. We know that we have stdin from devices like the keyboard, but we can use files, output from other processes and the terminal as well, let's see an example.</p>
+<p>Let's say we have a peanuts.txt file and it has the text Hello World in it.</p>
+<pre><code>$ cat &lt; peanuts.txt &gt; banana.txt
+</code></pre>
+<p>Just like we had <code>&gt;</code> for stdout redirection, we can use <code>&lt;</code> for stdin redirection.</p>
+<p>Normally in the cat command, you send a file to it and that file becomes the stdin, in this case, we redirected peanuts.txt to be our stdin. Then the output of cat peanuts.txt which would be Hello World gets redirected to another file called banana.txt, and if banana.txt file doesn't exist, it will be created.</p>
+<h3 id="grep">grep</h3>
+<p>The grep command is quite possibly the most common text processing command you will use. It allows you to search files for characters that match a certain pattern. What if you wanted to know if a file existed in a certain directory or if you wanted to see if a string was found in a file? You certainly wouldn't dig through every line of text, you would use grep!</p>
+<p>Let's use our <code>sample.txt</code> file as an example:</p>
+<pre><code>$ grep fox sample.txt
+</code></pre>
+<p>You should see that grep found fox in the <code>sample.txt</code> file.</p>
+<p>You can also grep patterns that are case insensitive with the <code>-i</code> flag:</p>
+<pre><code>$ grep -i somepattern somefile
+</code></pre>
+<p>To get even more flexible with <code>grep</code> you can combine it with other commands with <code>|</code></p>
+<pre><code>$ env | grep -i User
+</code></pre>
+<p>As you can see <code>grep</code> is pretty versatile. You can even use regular expressions in your pattern</p>
+<pre><code>$ ls /somedir | grep '.txt$'
+</code></pre>
+<p>Should return all files ending with <code>.txt</code> in <code>somedir</code>.</p>
+<h3 id="text-editors">Text Editors</h3>
+<p>Vim and emacs are popular text editors that are installed by default on most Linux distributions and they both have their pros and cons. They are essentially coding, word document processing and basically all in one editors. <br></p>
+<h4 id="vim-vi-improved">Vim (Vi Improved)</h4>
+<p>Vim stands for vi (Improved) just like its name it stands for an improved version of the vi text editor command. It's super lightweight, opening and editing a file with vim is quick and easy. It's also almost always available, if you booted up a random Linux distribution, chances are vim is installed by default.</p>
+<p>To fire up vim just type:</p>
+<pre><code>vim
+</code></pre>
+<h4 id="vim-search-patterns">Vim Search Patterns</h4>
+<p>To search for an expression just type the <code>/</code> key and then your search result while you are in a vim session. Once you hit enter, you can press <code>n</code> to go forward or <code>N</code> to go backward in your search results.</p>
+<pre><code>My pretty file is very pretty.
+
+
+/pretty
+
+
+
+will find the pretty words in the text file.
+</code></pre>
+<p>The ? search command will search the text file backwards, so in the previous example, the last pretty would come up first. </p>
+<pre><code>My pretty file is very pretty.
+
+
+?pretty
+
+
+
+will find the pretty words in the text file.
+</code></pre>
+<h4 id="vim-navigation">Vim Navigation</h4>
+<p>Now you may notice, the mouse is nowhere of use here. To navigate a text document in vim, use the following keys:</p>
+<ul>
+<li><code>h</code> or the left arrow - will move you left one character</li>
+<li><code>k</code> or the up arrow - will move you up one line</li>
+<li><code>j</code> or the down arrow - will move you down one line</li>
+<li><code>l</code> or the right arrow - will move you right one character</li>
+</ul>
+<h4 id="vim-appending-text">Vim Appending Text</h4>
+<p>Now you may have noticed if you tried to type something you wouldn't be able to. That's because you are in command mode. This can get pretty confusing especially if you just want to open a file and enter text. The command mode is used for when you enter commands like <code>h</code>,<code>j</code>,<code>k</code>,<code>l</code> etc. To insert text you'll need to enter insert mode first. `</p>
+<ul>
+<li><code>i</code> - insert text before the cursor</li>
+<li><code>O</code> - insert text on the previous line</li>
+<li><code>o</code> - insert text on the next line</li>
+<li><code>a</code> - append text after the cursor</li>
+<li><code>A</code> - append text at the end of the line</li>
+</ul>
+<p>Notice how when you type any of these insertion modes, you'll see that vim has entered insert mode at the bottom of the shell. To exit insert mode and go back to command mode, just hit the <code>Esc</code> key.</p>
+<h4 id="vim-editing">Vim Editing</h4>
+<p>Now that we have a couple of lines written, let's edit it a bit more and remove some cruft.</p>
+<ul>
+<li><code>x</code> - used to cut the selected text also used for deleting characters</li>
+<li><code>dd</code> - used to delete the current line</li>
+<li><code>y</code> - yank or copy whatever is selected</li>
+<li><code>yy</code> - yank or copy the current line</li>
+<li><code>p</code> - paste the copied text before the cursor</li>
+</ul>
+<h4 id="vim-saving-and-exiting">Vim Saving and Exiting</h4>
+<p>Now that you've done your editing it's time to actually save and quit out of vim:</p>
+<ul>
+<li><code>:w</code> - writes or saves the file</li>
+<li><code>:q</code> - quit out of vim</li>
+<li><code>:wq</code> - write and then quit</li>
+<li><code>:q!</code> - quit out of vim without saving the file</li>
+<li><code>ZZ</code> - equivalent of :wq, but one character faster</li>
+<li><code>u</code> - undo your last action</li>
+<li><code>Ctrl-r</code> - redo your last action</li>
+</ul>
+<p>You may not think <code>ZZ</code> is necessary, but you'll eventually see that your fingers may tend to lean towards this rather than <code>:wq</code>. <br></p>
+<h2 id="permissions">Permissions</h2>
+<h3 id="file-permissions">File Permissions</h3>
+<p>Files have different permissions or file modes. Let's look at an example:</p>
+<pre><code>$ ls -l Desktop/
+drwxr-xr-x 2 pete penguins 4096 Dec 1 11:45 .
+</code></pre>
+<p>There are four parts to a file's permissions. The first part is the filetype, which is denoted by the first character in the permissions, in our case since we are looking at a directory it shows <code>d</code> for the filetype. Most commonly you will see a <code>-</code> for a regular file.</p>
+<p>The next three parts of the file mode are the actual permissions. The permissions are grouped into 3 bits each. The first 3 bits are user permissions, then group permissions and then other permissions. I've added the pipe to make it easier to differentiate.</p>
+<pre><code>d | rwx | r-x | r-x
+</code></pre>
+<p>Each character represent a different permission: </p>
+<ul>
+<li><code>r:</code> readable</li>
+<li><code>w:</code> writable</li>
+<li><code>x:</code> executable (basically an executable program)</li>
+<li><code>-:</code> empty</li>
+</ul>
+<p>So in the above example, we see that the user pete has read, write and execute permissions on the file. The group penguins has read and execute permissions. And finally, the other users (everyone else) has read and execute permissions.</p>
+<h3 id="modifying-permissions">Modifying Permissions</h3>
+<p>Changing permissions can easily be done with the chmod command.
+First, pick which permission set you want to change, user, group or other. You can add or remove permissions with a <code>+</code> or <code>-</code>, let's look at some examples.</p>
+<p>Adding permission bit on a file </p>
+<pre><code>$ chmod u+x myfile
+</code></pre>
+<p>The above command reads like this: change permission on myfile by adding executable permission bit on the user set. So now the user has executable permission on this file!</p>
+<p>Removing permission bit on a file </p>
+<pre><code>$ chmod u-x myfile
+</code></pre>
+<p>Adding multiple permission bits on a file </p>
+<pre><code>$ chmod ug+w
+</code></pre>
+<p>There is another way to change permissions using numerical format. This method allows you to change permissions all at once. Instead of using <code>r</code>, <code>w</code>, or <code>x</code> to represent permissions, you'll use a numerical representation for a single permission set. So no need to specify the group with <code>g</code> or the user with <code>u</code>.</p>
+<p>The numerical representations are seen below:</p>
+<ul>
+<li><code>4</code>: read permission</li>
+<li><code>2</code>: write permission</li>
+<li><code>1</code>: execute permission</li>
+</ul>
+<p>Let's look at an example:</p>
+<pre><code>$ chmod 755 myfile
+</code></pre>
+<p>Can you guess what permissions we are giving this file? Let's break this down, so now <code>755</code> covers the permissions for all sets. The first number <code>7</code> represents user permissions, the second number <code>5</code> represents group permissions and the last <code>5</code> represents other permissions.</p>
+<p>But, <code>7</code> and <code>5</code> weren't listed above, where are we getting these numbers? Remember we are combining all the permissions into one number now, so you'll have to get some math involved.</p>
+<p><code>7 = 4 + 2 + 1</code>, so <code>7</code> is the user permissions and it has <code>read</code>, <code>write</code> and <code>execute</code> permissions</p>
+<p><code>5 = 4 + 1</code>, the group has <code>read</code> and <code>execute</code> permissions</p>
+<p><code>5 = 4 +1</code>, and all other users have <code>read</code> and <code>execute</code> permissions</p>
+<p>One thing to note: it's not a great idea to be changing permissions, you could potentially expose a sensitive file for everyone to modify, however many times you legitimately want to change permissions, just take precaution when using the <code>chmod</code> command.</p>
+<h2 id="packages">Packages</h2>
+<h3 id="software-distribution">Software Distribution</h3>
+<p>Your system is comprised of many packages such as internet browsers, text editors, media players, etc. These packages are managed via package managers, which install and maintain the software on your system. Not all packages are installed through package managers though, you can commonly install packages directly from their source code, however the majority of the time you will use a package manager to install software. </p>
+<p>What are packages? You may know them as Chrome, Photoshop, etc and they are, but what they really are just lots and lots of files that have been compiled into one. The people (or sometimes a single person) that write this software are known as upstream providers, they compile their code and write up how to get it installed. These upstream providers work on getting out new software and update existing software. When they are ready to release it to the world, they send their package to package maintainers, who handle getting this piece of software in the hands of the users. These package maintainers review, manage and distribute this software in the form of packages.</p>
+<h3 id="package-repositories">Package Repositories</h3>
+<p>Repositories are just a central storage location for packages. There are tons of repositories that hold lots of packages and best of all they are all found on the internet. Your machine doesn't know where to look for these repositories unless you explicitly tell it where to look.</p>
+<p>For example, let's say I want WackyWidgets Software on my machine. Well WackyWidgets manages their own repositories for their widget packages, inside this repository are 10 packages, the CoolWidget package, the SuperWidget package, etc. WackyWidgets hosts this repository at a source link called: http://download.widgets/linux/deb/</p>
+<p>Now instead of going to their website to download the package directly, you can tell your machine to find WackyWidgets software from the source link.</p>
+<p>Your distribution already comes with pre-approved sources to get packages from and this is how it installs all the base packages you see on your system. On a Debian system, this sources file is the <code>/etc/apt/sources.list</code> file. Your machine will know to look there and check for any source repositories you added.</p>
+<h3 id="apt-package-management">apt (Package Management)</h3>
+<p>One of the most popular management systems is apt. </p>
+<pre><code>Debian: $ apt install package_name
+</code></pre>
+<p>Remove a package</p>
+<pre><code>Debian: $ apt remove package_name
+</code></pre>
+<p>Updating packages for a repository</p>
+<p>It's always best practice to update your package repositories so they are up to date before you install and update a package.</p>
+<pre><code>Debian: apt update; apt upgrade
+</code></pre>
+<p>Get information about an installed package</p>
+<pre><code>Debian: apt show package_name
+</code></pre>
+<h2 id="compile-source-code">Compile Source Code</h2>
+<p>Often times you will encounter an obscure package that only comes in the form of pure source code. You'll need to use a few commands to get that source code package compiled and installed on your system.</p>
+<p>First thing is first, you'll need to have software to install the tools that will allow you to compile source code.</p>
+<pre><code>$ sudo apt install build-essential
+</code></pre>
+<p>Once you do that, extract the contents of the package file, most likely a .tar.gz file.</p>
+<pre><code>$ tar -xzvf package.tar.gz
+</code></pre>
+<p>Before you do anything, take a look at the <code>README</code> or <code>INSTALL</code> file inside the package. Sometimes there will be specific installation instructions.</p>
+<p>Depending on what compile method that the developer used, you'll have to use different commands, such as <code>cmake</code> or something else.</p>
+<p>However, most commonly you'll see basic make compilation, so we'll discuss that:</p>
+<p>Inside the package contents will be a configure script, this script checks for dependencies on your system and if you are missing anything, you'll see an error and you'll need to fix those dependencies.</p>
+<pre><code>$ ./configure
+</code></pre>
+<p>The <code>./</code> allows you to execute a script in the current directory.</p>
+<pre><code>$ make
+</code></pre>
+<p>Inside of the package contents, there is a file called <code>Makefile</code> that contains rules to building the software. When you run the make command, it looks at this file to build the software.</p>
+<pre><code>$ sudo make install
+</code></pre>
+<p>This command actually installs the package, it will copy the correct files to the correct locations on your computer.</p>
+<p>If you want to uninstall the package, use:</p>
+<pre><code>$ sudo make uninstall
+</code></pre>
+<p>Be wary when using <code>make install</code>, you may not realize how much is actually going on in the background. If you decide to remove this package, you may not actually remove everything because you didn't realize what was added to your system. Instead forget everything about <code>make install</code> that I just explained to you and use the <code>checkinstall command</code>. This command will make a <code>.deb</code> file for you that you can easily install and uninstall.</p>
+<pre><code>$ sudo checkinstall
+</code></pre>
+<p>This command will essentially <code>make install</code> and build a <code>.deb</code> package and install it. This makes it easier to remove the package later on.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../board_details/" class="btn btn-neutral float-right" title="Board Specific Details">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../getting_started/" class="btn btn-neutral" title="Setting up STM32MP157C-DK2"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../getting_started/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../board_details/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
